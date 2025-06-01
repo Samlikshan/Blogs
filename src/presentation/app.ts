@@ -1,10 +1,19 @@
 import express from "express";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 
+import authRouter from "./routes/authRoutes";
+
+import logger from "../shared/utils/logger";
 import { connectDB } from "../config/database";
-import logger from "../utils/logger";
+import { errorHandler } from "../middlewares/errorHandler";
 
-export const app = express();
+const app = express();
+
+//config
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 
 app.use(
   morgan("dev", {
@@ -15,3 +24,9 @@ app.use(
 );
 
 connectDB();
+
+//routes
+app.use("/api/auth", authRouter);
+
+app.use(errorHandler);
+export default app;
