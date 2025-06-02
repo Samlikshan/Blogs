@@ -40,4 +40,16 @@ export const loginService = async (email: string, password: string) => {
   }
 };
 
-export const logoutService = () => {};
+export const logoutService = async () => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/logout`,
+      {},
+      { withCredentials: true, withXSRFToken: true }
+    );
+    console.log(response, "logout response");
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};

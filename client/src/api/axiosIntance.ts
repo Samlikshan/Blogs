@@ -24,7 +24,7 @@ axiosInstance.interceptors.response.use(
       error.config._retry = true;
 
       try {
-        await axios.get(
+        await axios.post(
           `${import.meta.env.VITE_SERVER_URL}/auth/refresh-token`,
           { withCredentials: true }
         );

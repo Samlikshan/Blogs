@@ -98,4 +98,10 @@ export class AuthController {
       next(error);
     }
   };
+  logout = async (req: Request, res: Response) => {
+    console.log(req.cookies, "logout cookies");
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
+    res.json({ message: "Logged out successfully" });
+  };
 }
