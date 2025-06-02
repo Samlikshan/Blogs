@@ -52,12 +52,14 @@ export class AuthController {
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
+        path: "/",
         sameSite: "none",
         maxAge: 15 * 60 * 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
+        path: "/",
         sameSite: "none",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
@@ -94,6 +96,7 @@ export class AuthController {
         httpOnly: true,
         secure: true, // Only for HTTPS!
         sameSite: "none",
+        path: "/",
         maxAge: 15 * 60 * 60 * 1000,
       });
       res.json({ message: "Token refreshed succssfully" });
