@@ -14,7 +14,7 @@ const uploadOptions = {
 
 const fileUpload = new FileUpload(uploadOptions);
 
-router.get("/", authMiddleWare(), blogController.listAllBlogs);
+router.get("/", blogController.listAllBlogs);
 router.patch(
   "/:blogId",
   fileUpload.uploadFile("blog-image"),
@@ -28,7 +28,7 @@ router.post(
   blogController.createBlog
 );
 router.get("/profile", authMiddleWare(), blogController.listUserBlogs);
-router.get("/:blogId", authMiddleWare(), blogController.blogDetails);
+router.get("/:blogId", blogController.blogDetails);
 router.delete("/:blogId", authMiddleWare(), blogController.deleteBlog);
 
 export default router;

@@ -29,7 +29,7 @@ const Login: React.FC = () => {
 
       if (response.status == 200) {
         dispatch(login({ ...response.data.user }));
-        navigate("/dashboard");
+        navigate("/");
       } else {
         setError(response.data.message);
       }
