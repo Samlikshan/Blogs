@@ -3,7 +3,7 @@
     "test": "jest",
     "dev": "nodemon --exec ts-node src/config/server.ts",
     "build": "tsc",
-    "start": "node dist/interfaces/app.js"
+    "start": "node dist/config/server.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.821.0",
