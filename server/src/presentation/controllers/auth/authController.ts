@@ -52,12 +52,12 @@ export class AuthController {
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
-        sameSite: "lax",
+        sameSite: "none",
       });
 
       res.json(response);
@@ -91,7 +91,7 @@ export class AuthController {
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.json({ message: "Token refreshed succssfully" });
     } catch (error) {
