@@ -16,9 +16,10 @@ import { errorHandler } from "../middlewares/errorHandler";
 const app = express();
 
 //config
-
+app.set('trust proxy',1)
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
+app.use(express.urlencoded({ extended: true }));
 app.use(
   morgan("dev", {
     stream: {
@@ -26,7 +27,7 @@ app.use(
     },
   })
 );
-app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 app.use(cookieParser());
 
