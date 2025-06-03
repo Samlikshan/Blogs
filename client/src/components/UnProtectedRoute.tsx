@@ -9,18 +9,13 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  // const {isAuthenticated} = ();
+const UnProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated } = useSelector((state: RootState) => state.user);
-  // if (isLoading) {
-  //   return <Loading fullPage text="Loading..." />;
-  // }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+  if (isAuthenticated) {
+    return <Navigate to="/" replace />;
   }
 
   return <>{children}</>;
 };
 
-export default ProtectedRoute;
+export default UnProtectedRoute;

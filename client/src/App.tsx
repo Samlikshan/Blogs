@@ -12,6 +12,7 @@ import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import PostDetails from "./pages/PostDetails";
 import { Toaster } from "sonner";
+import UnProtectedRoute from "./components/UnProtectedRoute";
 
 function App() {
   return (
@@ -22,8 +23,23 @@ function App() {
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<Blogs />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/register"
+            element={
+              <UnProtectedRoute>
+                <Register />
+              </UnProtectedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <UnProtectedRoute>
+                <Login />
+              </UnProtectedRoute>
+            }
+          />
+
           <Route path="/posts/:id" element={<PostDetails />} />
 
           {/* Protected routes */}
