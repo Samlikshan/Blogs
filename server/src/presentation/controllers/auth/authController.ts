@@ -54,13 +54,16 @@ export class AuthController {
         secure: true, // Only for HTTPS!
         path: "/",
         sameSite: "none",
+        partitioned: true,
+        domain: ".polaroids.site",
         maxAge: 15 * 60 * 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
-        path: "/",
+        domain: ".polaroids.site",
         sameSite: "none",
+        partitioned: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -96,7 +99,8 @@ export class AuthController {
         httpOnly: true,
         secure: true, // Only for HTTPS!
         sameSite: "none",
-        path: "/",
+        domain: ".polaroids.site",
+        partitioned: true,
         maxAge: 15 * 60 * 60 * 1000,
       });
       res.json({ message: "Token refreshed succssfully" });

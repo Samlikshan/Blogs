@@ -51,7 +51,7 @@ const EditPost: React.FC = () => {
       if (updatedPost) {
         navigate(`/posts/${id}`);
       } else {
-        setError("Failed to update post");
+        // setError("Failed to update post");
       }
     } catch (err) {
       console.error("Error updating post:", err);

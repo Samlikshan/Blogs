@@ -4,6 +4,7 @@ import multerS3 from "multer-s3";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import { RequestHandler } from "express";
+import { HttpException } from "../errors/httpException";
 
 interface IFileUploadOptions {
   fileTypes: string[];
@@ -64,7 +65,10 @@ export class FileUpload {
           cb(null, true);
         } else {
           cb(
-            new Error(`Only ${options.fileTypes.join(", ")} files are allowed`)
+            new HttpException(
+              400,
+              `Only ${options.fileTypes.join(", ")} files are allowed`
+            )
           );
         }
       },
