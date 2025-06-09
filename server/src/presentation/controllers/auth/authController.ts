@@ -55,13 +55,11 @@ export class AuthController {
         path: "/",
         sameSite: "none",
         partitioned: true,
-        domain: ".polaroids.site",
         maxAge: 15 * 60 * 60 * 1000,
       });
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true, // Only for HTTPS!
-        domain: ".polaroids.site",
         sameSite: "none",
         partitioned: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
